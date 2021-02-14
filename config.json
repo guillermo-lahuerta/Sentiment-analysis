@@ -6,8 +6,8 @@
         20000,
         32
       ],
-      "tensorPath": "https://github.com/Guille1899/Sentiment_analysis/blob/main/output/vectors.tsv",
-      "metadataPath": "https://github.com/Guille1899/Sentiment_analysis/blob/main/output/metadata.tsv"
+      "tensorPath": "https://raw.githubusercontent.com/Guille1899/Sentiment_analysis/main/output/vectors.tsv",
+      "metadataPath": "https://raw.githubusercontent.com/Guille1899/Sentiment_analysis/main/output/metadata.tsv"
     }
   ]
 }
