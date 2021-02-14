@@ -1,28 +1,29 @@
-# Sentiment analysis
+# Sentiment analysis: IMDB reviews
 
-## About this app
+## About this notebook
 
-This [app](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:___/) allows you classify movie reviews (i.e., "good" or "bad").
+This notebook allows you to classify movie reviews extracted from the [IMBD](https://www.imdb.com/) website. By means of embeddings, it also allows you to visualize how the different words cluster with each other
 
-![](img/video_app.gif)
+![screenshot](img/embedding.png)
 
-[Link to app](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:8080/)
+## Sentiment Analysis
 
-## LeNet-5
+Sentiment analysis is a *Natural Language Processing* technique used to determine the "sentiment" of a corpus of text (e.g., whether the opinion expressed is either positive or negative).
 
-Convolutional Neural Networks is the standard architecture for solving tasks associated with images (e.g., image classification). Some of the well-known deep learning architectures for CNN are LeNet-5 (7 layers), GoogLeNet (22 layers), AlexNet (8 layers), VGG (16–19 layers), and ResNet (152 layers).
+The model presented in this notebook, provides the following accuracies:
 
-For this project, we use LeNet-5, which has been successfully used on the MNIST dataset to identify handwritten-digit patterns. The LeNet-5 architecture is presented in the following schema.
-
-![screenshot](img/lenet.png)
+- Train accuracy: 99.03%
+- Test accuracy: 84.27%
 
 ## Data
 
-The dataset used for this model corresponds to the [IMDB](http://yann.lecun.com/exdb/mnist/) dataset.
-It is composed by a training set of 60,000 examples, and a test set of 10,000 examples.
-The digits have been pre-processed to be size-normalized and centred in a fixed-size image of 28x28 pixels.
+The dataset used to train the present model, correpsond to the [IMDB reviews](https://www.tensorflow.org/datasets/catalog/imdb_reviews) dataset.
+It is composed by:
 
-![screenshot](img/mnist.png)
+- Training set: 25,000 examples
+- Test set: 25,000 examples.
+
+![screenshot](img/wordcloud.png)
 
 ## Requirements
 
@@ -75,13 +76,12 @@ pip install <whl_url>
 ```
 pip install tensorflow==2.4.0
 ```
-
-### Run the app
+<!-- ### Run the app
 To run the app locally, use these commands:
 ```
 conda activate sentiment
 python ./app/app.py
-```
+``` -->
 
 ### Run the notebook
 Also, you can run the jupyter notebook locally:
@@ -90,10 +90,8 @@ conda activate sentiment
 jupyter notebook
 ```
 
-![](img/video_notebook.gif)
-
 ## Resources
 
 * [Dash](https://dash.plot.ly/)
 * [TensorFlow](https://www.tensorflow.org/)
-* [MNIST](http://yann.lecun.com/exdb/mnist/)
+* [IMDB](https://www.imdb.com/)
