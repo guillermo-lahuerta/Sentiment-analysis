@@ -1,8 +1,8 @@
 # Sentiment analysis: IMDB reviews
 
-## About this notebook
+## About this app
 
-This notebook allows you to classify movie reviews extracted from the [IMBD](https://www.imdb.com/) website. By means of embeddings, it also allows you to visualize how the different words cluster with each other
+This app allows you to classify movie reviews extracted from the [IMBD](https://www.imdb.com/) website. By means of embeddings, it also allows you to visualize how the different words cluster with each other
 
 ![screenshot](img/embedding.png)
 
@@ -76,12 +76,14 @@ pip install <whl_url>
 ```
 pip install tensorflow==2.4.0
 ```
-<!-- ### Run the app
+
+### Run the app
 To run the app locally, use these commands:
 ```
 conda activate sentiment
-python ./app/app.py
-``` -->
+cd app
+python app_IMDB.py
+```
 
 ### Run the notebook
 Also, you can run the jupyter notebook locally:

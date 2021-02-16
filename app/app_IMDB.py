@@ -3,7 +3,7 @@
 # General imports
 import numpy as np ; np.random.seed(1) # for reproducibility
 import pandas as pd
-from skimage import io
+# from skimage import io
 import json
 import os
 import plotly.express as px
@@ -12,6 +12,20 @@ import shutil
 import pathlib
 import joblib
 pd.options.mode.chained_assignment = None
+import numpy as np ; np.random.seed(1) # for reproducibility
+import os
+import joblib
+import io
+import zipfile
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import json
+import random
+import shutil
+from datetime import datetime
+from sklearn.model_selection import train_test_split
+import platform
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 
 # TensorFlow
 import tensorflow as tf
@@ -25,14 +39,12 @@ from PIL import Image, ImageDraw, ImageFilter
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State  # ClientsideFunction
 import colorlover
 from dash_canvas import DashCanvas
 from dash_canvas.utils import array_to_data_url, parse_jsonstring
 from dash.exceptions import PreventUpdate
-
-# Force to use CPU for this app
-# tf.config.set_visible_devices([], 'GPU')
 
 # Indicate the version of Tensorflow and whether it uses the CPU or the GPU
 print("TensorFlow version:", tf.__version__)
@@ -128,71 +140,102 @@ def description_card():
     return html.Div(
         id="description-card",
         children=[
-            html.Br(),
-            html.H1(
-                "Handwritten digit classifier with LeNet-5",
-                style={
-                    'text-align': 'center',
-                    'font-family': 'monaco, sans-serif'
-                }
-            ),
-            html.H5("About this App"),
-            html.Div(
-                children="This app allows you to recognize digits (i.e., numbers from 0 to 9) "
-                         "manually drawn on your screen. I created this simple app as an example of how to combine "
-                         "the complexity of Machine Learning algorithms (such as Convolutional Neural Networks) "
-                         "with the beauty and simpleness of more comprehensive tools (i.e., Python-Dash)."
-            ),
-            html.Div([
-                html.A("My LinkedIn profile",
-                       href='https://www.linkedin.com/in/guillermo-lahuerta-pi%C3%B1eiro-b9a58913a/',
-                       target="_blank")
-            ]),
-            html.Div([
-                html.A("GitHub repo",
-                       href='https://github.com/Guille1899/Digit_recognition',
-                       target="_blank")
+            # Row 0
+            dbc.Row([
+                html.Br(),
+                html.H1(
+                    "Sentiment analysis: IMDB reviews",
+                    style={
+                        'text-align': 'center',
+                        'font-family': 'monaco, sans-serif'
+                    }
+                ),
             ]),
             html.Br(),
-            html.H5("LeNet-5"),
-            html.Div(
-                children="Convolutional Neural Networks is the standard architecture of a neural network designed for "
-                         "solving tasks associated with images (e.g., image classification). Some of the well-known "
-                         "deep learning architectures for CNN are LeNet-5 (7 layers), GoogLeNet (22 layers), AlexNet "
-                         "(8 layers), VGG (16–19 layers), and ResNet (152 layers). For this app, I used LeNet-5, "
-                         "which has been successfully used on the MNIST dataset to identify handwritten-digit "
-                         "patterns."
-            ),
             html.Br(),
-            html.H5("Data"),
-            html.Div(
-                children="The dataset used to train, validate and test the model, correpsond to the MNIST dataset. "
-                         "It is composed by a training set of 60,000 examples, and a test set of 10,000 examples. "
-                         "The digits have been pre-processed to be size-normalized and centered in a fixed-size "
-                         "image of 28x28 pixels."
-            ),
-            html.Div([
-                html.A("MNIST database", href='http://yann.lecun.com/exdb/mnist/', target="_blank")
-            ])
+            # First row
+            dbc.Row([
+                dbc.Col(
+                    # Left column
+                    html.Div(
+                        id="left-column",
+                        children=[
+                            html.H5("About this App"),
+                            html.Div(
+                                children="This app allows you to classify movie reviews extracted from IMBD. "
+                                         "By means of embeddings, it also allows you to visualize how the different words cluster with each other."
+                            ),
+                            html.Div([
+                                html.A("LinkedIn",
+                                       href='https://www.linkedin.com/in/guillermo-lahuerta-pi%C3%B1eiro-b9a58913a/',
+                                       target="_blank")
+                            ]),
+                            html.Div([
+                                html.A("GitHub repo",
+                                       href='https://www.linkedin.com/in/guillermo-lahuerta-pi%C3%B1eiro-b9a58913a/n',
+                                       target="_blank")
+                            ]),
+                        ],
+                    ), style={'display': 'inline-block', 'width': '30%', 'justify': "center",
+                              'vertical-align': 'top', 'margin-left': '0.5em', 'margin-right': '0.5em'}
+                ),
+                dbc.Col(
+                    # Center column
+                    html.Div(
+                        id="center-column",
+                        children=[
+                            html.H5("Sentiment Analysis"),
+                            html.Div(
+                                children="Sentiment analysis is a Natural Language Processing technique used to determine the "
+                                         "'sentiment' of a corpus of text (e.g., whether the opinion expressed is either positive or "
+                                         "negative). The model presented in this app, provides the following accuracies a train "
+                                         "accuracy of 99.03% and a test accuracy of 84.27%"
+                            ),
+                        ],
+                    ), style={'display': 'inline-block', 'width': '30%', 'justify': "center",
+                              'vertical-align': 'top', 'margin-left': '0.5em', 'margin-right': '0.5em'}
+                ),
+                dbc.Col(
+                    # Right column
+                    html.Div(
+                        id="right-column",
+                        children=[
+                            html.H5("Data"),
+                            html.Div(
+                                children="The dataset used to train this model, correpsond to the 'IMDB reviews' dataset. "
+                                         "It is composed by a training set of 25,000 examples, and a test set of 25,000 examples. "
+                            ),
+                            html.Div([
+                                html.A("IMDB database",
+                                       href='https://www.tensorflow.org/datasets/catalog/imdb_reviews/',
+                                       target="_blank")
+                            ]),
+                        ],
+                    ), style={'display': 'inline-block', 'width': '30%', 'justify': "center",
+                              'vertical-align': 'top', 'margin-left': '0.5em', 'margin-right': '0.5em'}
+                )
+                ])
         ],
+        style={'width': '100%', 'justify': "center", 'vertical-align': 'middle'}
     )
 
 
 
 
-################### Model ######################
+################### Paths ######################
 
-# Load model
-lenet_5_model = keras.models.load_model('./model/digit_recognizer_lenet_5.h5')
+# Define paths
+path_data = '../data'
+path_model = '../model'
+path_output = '../output'
 
-# Load history objects
-acc = joblib.load('./model/acc_lenet_5.h5')
-val_acc = joblib.load('./model/val_acc_lenet_5.h5')
-loss = joblib.load('./model/loss_lenet_5.h5')
-val_loss = joblib.load('./model/val_loss_lenet_5.h5')
 
-# Get number of epochs
-epochs = range(len(acc))
+#################### Loads #####################
+
+# Load model and history
+model = keras.models.load_model(os.path.join(path_model, 'imdb_model.h5'))
+model.load_weights(os.path.join(path_model, 'imdb_weights.h5'))
+history_dict = joblib.load(os.path.join(path_model, 'imdb_history'))
 
 
 
@@ -207,113 +250,132 @@ app.layout = html.Div(
         html.Div(
             id="banner",
             children=[
-                # html.Img(
-                #     src=app.get_asset_url("plotly_logo.png"),
-                #     style={'height': '10%', 'width': '10%'}
-                # )
+                html.Img(
+                    src=app.get_asset_url("imdb_logo.jpeg"),
+                    style={'height': '5%', 'width': '5%'}
+                )
             ],
         ),
-        # Header
-        html.Div(
-            id="header",
-            children=[
-                description_card(),
-                html.Hr(),
-            ],
-        ),
-        # Main body
-        html.Div([
-            # Left column
-            html.Div(
-                id="left-column",
-                children=[
-                    html.Div(
-                        children=[
-                            html.H5("Draw digit"),
-                            html.Div(
-                                children="Please, do not touch the limits of the black canvas!"
-                            ),
-                            html.Br(),
-                            DashCanvas(
-                                id='digit_drawn',
-                                filename="./assets/image_0.png",
-                                width=420,
-                                height=420,
-                                scale=1,
-                                lineWidth=50,
-                                lineColor='white',
-                                tool="pencil",
-                                zoom=1,
-                                goButtonTitle='Predict',
-                                hide_buttons=["zoom", "pan", "line", "pencil", "rectangle", "select"]
-                            )
-                        ],
-                    ),
-                    html.Br(),
-                ],
-                className="three columns"
-            ),
-            # Center column
-            html.Div(
-                id="center-column",
-                children=[
-                    html.Div(
-                        children=[
-                            html.H5("Prediction"),
-                            html.Div(
-                                children="The digit drawn in the left canvas is pre-processed to be size-normalized "
-                                         "and centered with 28x28 pixels (see image on the right). In this way, the image is as similar as "
-                                         "possible as the training instances obtained from the MNIST database."
-                            ),
-                            html.Br(),
-                            html.Div(
-                                children="Please, note that the intention of this app was never to provide a super accurate model, "
-                                         "but rather show a dummy example of how to integrate a CNN with a webapp."
-                            ),
-                            html.Br(),
-                            html.Div(id='predict-text', style={'font-weight': 'bold', 'font-size': '60px'}),
-                            html.Br(),
-                        ],
-                    ),
-                    html.Br(),
-                ],
-                className="three columns"
-            ),
-            # Right column
-            html.Div(
-                id="right-column",
-                children=[
-                    html.Div(
-                        children=[
-                            html.Br(),
-                            html.Div(id='predict-canvas'),
-                        ],
-                    ),
-                    html.Br(),
-                ],
-                className="five columns"
-            ),
+        # Description body
+        dbc.Row([
+            description_card(),
+            html.Hr(),
         ]),
+        # Accuracy body
+        html.Div(
+            id="accuracy",
+            children=[
+                html.H5("Model accuracy"),
+                html.Br(),
+                html.Img(
+                    src=app.get_asset_url("acc.png"),
+                    style={'height': '75%', 'width': '75%', 'justify': "center",
+                           'vertical-align': 'middle', 'textAlign': 'center'}
+                )
+            ],
+            style={'width': '100%', 'justify': "center",
+                   'vertical-align': 'middle', 'textAlign': 'center'}
+        ),
+        html.Hr(),
+        # Embeddings body
+        html.Div(
+            id="embeds",
+            children=[
+                html.H5("Embeddings"),
+                html.Br(),
+                html.Iframe(
+                    src="https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/Guille1899/6185a0ed9d82bf371a984cf7c2ec8547/raw/688afac9a363f872036640cf6e8ddf2fa036c576/config.json",
+                    width="1500",
+                    height="600"
+                )],
+            style={'display': 'inline-block', 'justify': "center", 'width': '100%', 'textAlign': 'center'}
+        ),
+        html.Hr(),
+        # Word cloud body
+        html.Div(
+            id="wordcloud",
+            children=[
+                html.H5("Word cloud"),
+                html.Br(),
+                html.Img(
+                    src=app.get_asset_url("wordcloud.png"),
+                    style={'height': '35%', 'width': '35%', 'justify': "center",
+                           'vertical-align': 'middle', 'textAlign': 'center'}
+                )
+            ],
+            style={'width': '100%', 'justify': "center",
+                   'vertical-align': 'middle', 'textAlign': 'center'}
+        ),
+        html.Hr(),
+        # Use case
+        html.Div(
+            id="use-case",
+            children=[
+                html.H5("Try it yourself!"),
+                html.Br(),
+
+            ],
+            style={'width': '100%', 'justify': "center",
+                   'vertical-align': 'middle', 'textAlign': 'center'}
+        ),
         html.Br(),
         html.Br(),
+        html.Br(),
+
+        # # Second row
+        # html.Div([
+        #         html.Div(
+        #             children=[
+        #                 html.H5("Prediction"),
+        #                 html.Div(
+        #                     children="The digit drawn in the left canvas is pre-processed to be size-normalized "
+        #                              "and centered with 28x28 pixels (see image on the right). In this way, the image is as similar as "
+        #                              "possible as the training instances obtained from the MNIST database."
+        #                 ),
+        #                 html.Br(),
+        #                 html.Div(
+        #                     children="Please, note that the intention of this app was never to provide a super accurate model, "
+        #                              "but rather show a dummy example of how to integrate a CNN with a webapp."
+        #                 ),
+        #                 html.Br(),
+        #                 # html.Div(id='predict-text', style={'font-weight': 'bold', 'font-size': '60px'}),
+        #                 html.Br(),
+        #             ],
+        #         ),
+        #     html.Br(),
+        # ]),
+        # # Third row
+        # html.Div([
+        #         html.Div(
+        #             children=[
+        #                 html.Br(),
+        #                 # html.Div(id='predict-canvas'),
+        #             ],
+        #         ),
+        #         html.Br(),
+        # ]),
+        # html.Br(),
+        # html.Br(),
     ],
 )
 
 
 ################### Callbacks ######################
 
-@app.callback(Output('predict-canvas', 'children'),
-              Output('predict-text', 'children'),
-              Input('digit_drawn', 'json_data'))
-def update_data(string):
-    if string:
-        mask = parse_jsonstring(string).astype(int)
-        mask = (mask * 255).astype(np.uint8)
-        new_image = Image.fromarray(mask)
-        new_image.save("./data/img_to_predict.png")
-        return generate_prediction()
-    else:
-        raise PreventUpdate
+# @app.callback(Output('predict-canvas', 'children'),
+#               Output('predict-text', 'children'),
+#               Input('digit_drawn', 'json_data'))
+# def update_data(string):
+#     if string:
+#         mask = parse_jsonstring(string).astype(int)
+#         mask = (mask * 255).astype(np.uint8)
+#         new_image = Image.fromarray(mask)
+#         new_image.save("./data/img_to_predict.png")
+#         return generate_prediction()
+#     else:
+#         raise PreventUpdate
+
+
 
 
 
