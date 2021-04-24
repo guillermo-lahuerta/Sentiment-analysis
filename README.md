@@ -35,7 +35,7 @@ It is composed by:
 
 Clone this repository and navigate to the main folder. To do so, open your Terminal (for MacOS/Linux) or your Command Prompt (for Windows) and run the following commands:
 ```
-git clone https://github.com/Guille1899/sentiment.git
+git clone https://github.com/guillermo-lahuerta/sentiment.git
 cd ./sentiment/
 ```
 

@@ -189,7 +189,7 @@ def description_card():
                                 children="Sentiment analysis is a Natural Language Processing technique used to determine the "
                                          "'sentiment' of a corpus of text (e.g., whether the opinion expressed is either positive or "
                                          "negative). The model presented in this app, provides the following accuracies a train "
-                                         "accuracy of 99.03% and a test accuracy of 84.27%"
+                                         "accuracy of 99.03% and a test accuracy of 84.27%."
                             ),
                         ],
                     ), style={'display': 'inline-block', 'width': '30%', 'justify': "center",
@@ -206,7 +206,7 @@ def description_card():
                                          "It is composed by a training set of 25,000 examples, and a test set of 25,000 examples. "
                             ),
                             html.Div([
-                                html.A("IMDB database",
+                                html.A("IMDB dataset",
                                        href='https://www.tensorflow.org/datasets/catalog/imdb_reviews/',
                                        target="_blank")
                             ]),
@@ -268,7 +268,7 @@ app.layout = html.Div(
                 html.H5("Model accuracy"),
                 html.Br(),
                 html.Img(
-                    src=app.get_asset_url("acc.png"),
+                    src=app.get_asset_url("accuracy.png"),
                     style={'height': '75%', 'width': '75%', 'justify': "center",
                            'vertical-align': 'middle', 'textAlign': 'center'}
                 )
