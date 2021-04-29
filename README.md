@@ -17,7 +17,7 @@ The model presented in this notebook, provides the following accuracies:
 
 ## Data
 
-The dataset used to train the present model, correpsond to the [IMDB reviews](https://www.tensorflow.org/datasets/catalog/imdb_reviews) dataset.
+The dataset used to train the present model, corresponds to the [IMDB reviews](https://www.tensorflow.org/datasets/catalog/imdb_reviews) dataset.
 It is composed by:
 
 - Training set: 25,000 examples
@@ -65,14 +65,14 @@ pip install -r requirements.txt
 ```
 
 ### Install TensorFlow
-It's time to install *tensorflow*:
+It's time to install *TensorFlow*:
 
 * If you have a NVIDIA graphics card with CUDA architectures, you should consider installing *tensorflow-gpu* (instead of the regular *tensorflow*), to speed up your deep learning models. Rather than using *pip* or *conda* to try to figure out which version of TensorFlow you need, I recommend finding the exact "*.whl*" file from [TensorFlow](https://www.tensorflow.org/install/pip#package-location)’s site. Once you have the *url* of the corresponding TensorFlow version that you need, run the following command (substitute *<whl_url>* with the exact url):
 ```
 pip install <whl_url>
 ```
 
-* If you don't have a NVIDIA graphics card, you should install the regular *tensoflow* with the following command:
+* If you don't have a NVIDIA graphics card, you should install the regular *TensorFlow* with the following command:
 ```
 pip install tensorflow==2.4.0
 ```
