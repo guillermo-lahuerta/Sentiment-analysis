@@ -55,7 +55,8 @@ conda activate sentiment
 Now, create a Jupyter Notebook kernel for the new environment:
 ```
 conda install -y ipykernel jupyter
-conda install -y -c conda-forge jupyter_nbextensions_configurator
+conda install -c conda-forge jupyter_nbextensions_configurator
+conda install -c conda-forge jupyter_contrib_nbextensions
 python -m ipykernel install --user --name sentiment --display-name "sentiment"
 ```
 
