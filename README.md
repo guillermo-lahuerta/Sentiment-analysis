@@ -6,6 +6,8 @@ This [app](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:2020/) allo
 
 ![screenshot](img/embedding.png)
 
+[Link to the app](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:2020/)
+
 ## Sentiment Analysis
 
 Sentiment analysis is a *Natural Language Processing* technique used to determine the "sentiment" of a corpus of text (e.g., whether the opinion expressed is either positive or negative).
