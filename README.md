@@ -2,7 +2,7 @@
 
 ## About this app
 
-This app allows you to classify movie reviews extracted from the [IMBD](https://www.imdb.com/) website. By means of embeddings, it also allows you to visualize how the different words cluster with each other
+This [app](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:2020/) allows you to classify movie reviews extracted from the [IMBD](https://www.imdb.com/) website. By means of embeddings, it also allows you to visualize how the different words cluster with each other
 
 ![screenshot](img/embedding.png)
 
@@ -12,8 +12,8 @@ Sentiment analysis is a *Natural Language Processing* technique used to determin
 
 The model presented in this notebook, provides the following accuracies:
 
-- Train accuracy: 99.03%
-- Test accuracy: 84.27%
+- Train accuracy: 99.20%
+- Test accuracy: 83.83%
 
 ## Data
 
@@ -83,7 +83,7 @@ To run the app locally, use these commands:
 ```
 conda activate sentiment
 cd app
-python app_IMDB.py
+python app.py
 ```
 
 ### Run the notebook
