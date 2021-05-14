@@ -211,8 +211,9 @@ app.layout = html.Div(
             children=[
                 html.H5("Embeddings"),
                 html.Br(),
-                html.P('Please, click on "Sphereize data" to normalise the data and see the proper clusters (the '
+                html.B('Please, click on "Sphereize data" to normalise the data and see the proper clusters (the '
                        'checkbox option is in the left hand side).'),
+                html.Br(),
                 html.Br(),
                 html.Iframe(
                     src="https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/guillermo-lahuerta/6185a0ed9d82bf371a984cf7c2ec8547/raw/688afac9a363f872036640cf6e8ddf2fa036c576/config.json",
@@ -278,7 +279,7 @@ def update_output(n_clicks, value):
     if n_clicks > 0:
         resp = predict_sentiment(value)
         return 'The expected sentiment is: \n{}'.format(resp)
-    
+
 
 
 ################### Run the App ######################
