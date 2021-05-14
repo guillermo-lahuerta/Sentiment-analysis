@@ -278,9 +278,7 @@ def update_output(n_clicks, value):
     if n_clicks > 0:
         resp = predict_sentiment(value)
         return 'The expected sentiment is: \n{}'.format(resp)
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
+    
 
 
 ################### Run the App ######################
