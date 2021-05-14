@@ -211,8 +211,9 @@ app.layout = html.Div(
             children=[
                 html.H5("Embeddings"),
                 html.Br(),
+                html.Br(),
                 html.B('Please, click on "Sphereize data" to normalise the data and see the proper clusters (the '
-                       'checkbox option is in the left hand side).'),
+                       'checkbox option is on the left hand side).'),
                 html.Br(),
                 html.Br(),
                 html.Iframe(
