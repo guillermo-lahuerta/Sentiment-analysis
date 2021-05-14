@@ -2,11 +2,11 @@
 
 ## About this app
 
-This [app](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:2020/) allows you to classify movie reviews extracted from the [IMBD](https://www.imdb.com/) website. By means of embeddings, it also allows you to visualize how the different words cluster with each other
+This [Webapp](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:2020/) allows you to classify movie reviews. By means of embeddings, it also allows you to visualise how the different words cluster with each other.
 
-![screenshot](img/embedding.png)
+![screenshot](img/screenshot.png)
+![screenshot](img/embedding.gif)
 
-[Link to the app](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:2020/)
 
 ## Sentiment Analysis
 
