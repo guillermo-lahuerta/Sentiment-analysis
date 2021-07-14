@@ -2,7 +2,7 @@
 
 ## About this app
 
-This [Webapp](http://ec2-35-180-131-164.eu-west-3.compute.amazonaws.com:2020/) allows you to classify movie reviews. By means of embeddings, it also allows you to visualise how the different words cluster with each other.
+This [Webapp](http://ec2-52-47-116-65.eu-west-3.compute.amazonaws.com:80/) allows you to classify movie reviews. By means of embeddings, it also allows you to visualise how the different words cluster with each other.
 
 ![screenshot](img/screenshot.png)
 ![screenshot](img/embedding.gif)
