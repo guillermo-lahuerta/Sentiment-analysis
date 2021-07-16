@@ -37,8 +37,8 @@ It is composed by:
 
 Clone this repository and navigate to the main folder. To do so, open your Terminal (for MacOS/Linux) or your Command Prompt (for Windows) and run the following commands:
 ```
-git clone https://github.com/guillermo-lahuerta/sentiment.git
-cd ./sentiment/
+git clone https://github.com/guillermo-lahuerta/Sentiment-analysis.git
+cd Sentiment-analysis/
 ```
 
 I strongly suggest to create a virtual environment with Conda to manage dependencies and isolate projects. After installing [Miniconda](https://docs.conda.io/en/latest/miniconda.html), run the following commands to update the base conda packages:
