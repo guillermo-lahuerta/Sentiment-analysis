@@ -4,7 +4,7 @@
 
 This [web app](http://ec2-52-47-116-65.eu-west-3.compute.amazonaws.com:80/) allows you to classify movie reviews. By means of embeddings, it also allows you to visualise how the different words cluster with each other.
 
-![screenshot](img/screenshot.png)
+![screenshot](img/screenshot_app.png)
 ![screenshot](img/embedding.gif)
 
 
