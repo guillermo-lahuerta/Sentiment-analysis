@@ -2,7 +2,7 @@
 
 ## About this app
 
-This [Webapp](http://ec2-52-47-116-65.eu-west-3.compute.amazonaws.com:80/) allows you to classify movie reviews. By means of embeddings, it also allows you to visualise how the different words cluster with each other.
+This [web app](http://ec2-52-47-116-65.eu-west-3.compute.amazonaws.com:80/) allows you to classify movie reviews. By means of embeddings, it also allows you to visualise how the different words cluster with each other.
 
 ![screenshot](img/screenshot.png)
 ![screenshot](img/embedding.gif)
@@ -14,8 +14,8 @@ Sentiment analysis is a *Natural Language Processing* technique used to determin
 
 The model presented in this notebook, provides the following accuracies:
 
-- Train accuracy: 99.20%
-- Test accuracy: 83.83%
+- Train accuracy: 95.23%
+- Test accuracy: 83.88%
 
 ## Data
 
@@ -70,14 +70,14 @@ pip install -r requirements.txt
 ### Install TensorFlow
 It's time to install *TensorFlow*:
 
-* If you have a NVIDIA graphics card with CUDA architectures, you should consider installing *tensorflow-gpu* (instead of the regular *tensorflow*), to speed up your deep learning models. Rather than using *pip* or *conda* to try to figure out which version of TensorFlow you need, I recommend finding the exact "*.whl*" file from [TensorFlow](https://www.tensorflow.org/install/pip#package-location)’s site. Once you have the *url* of the corresponding TensorFlow version that you need, run the following command (substitute *<whl_url>* with the exact url):
-```
-pip install <whl_url>
-```
-
 * If you don't have a NVIDIA graphics card, you should install the regular *TensorFlow* with the following command:
 ```
 pip install tensorflow==2.4.0
+```
+
+* If you have a NVIDIA graphics card with CUDA architectures, you should consider installing *tensorflow-gpu* (instead of the regular *tensorflow*), to speed up your deep learning models. Rather than using *pip* or *conda* to try to figure out which version of TensorFlow you need, I recommend finding the exact "*.whl*" file from [TensorFlow](https://www.tensorflow.org/install/pip#package-location)’s site. Once you have the *url* of the corresponding TensorFlow version that you need, run the following command (substitute *<whl_url>* with the exact url):
+```
+pip install <whl_url>
 ```
 
 ### Run the app
