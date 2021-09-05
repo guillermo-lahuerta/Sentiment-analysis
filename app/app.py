@@ -56,6 +56,11 @@ def predict_sentiment(text):
 
     # Tokenize
     tokenizer = joblib.load(os.path.join(path_model, 'tokenizer'))
+
+    # # Use absolute path when running in the server
+    # tokenizer = joblib.load('/home/ubuntu/Sentiment-analysis/app/tokenizer')
+
+    # Sequence
     sequences = tokenizer.texts_to_sequences([text])
 
     # Add padding
@@ -111,7 +116,7 @@ model = keras.models.load_model(os.path.join(path_model, 'imdb_model.h5'))
 model.load_weights(os.path.join(path_model, 'imdb_weights.h5'))
 history_dict = joblib.load(os.path.join(path_model, 'imdb_history'))
 
-# Use absolute path when running in the server
+# # Use absolute path when running in the server
 # model = keras.models.load_model('/home/ubuntu/Sentiment-analysis/app/imdb_model.h5')
 # model.load_weights('/home/ubuntu/Sentiment-analysis/app/imdb_weights.h5')
 # history_dict = joblib.load('/home/ubuntu/Sentiment-analysis/app/imdb_history')
