@@ -107,11 +107,14 @@ path_output = '../output'
 #################### Loads #####################
 
 # Load model and history
-# model = keras.models.load_model(os.path.join(path_model, 'imdb_model.h5'))
-# model.load_weights(os.path.join(path_model, 'imdb_weights.h5'))
-model = keras.models.load_model('imdb_model.h5')
-model.load_weights('imdb_weights.h5')
+model = keras.models.load_model(os.path.join(path_model, 'imdb_model.h5'))
+model.load_weights(os.path.join(path_model, 'imdb_weights.h5'))
 history_dict = joblib.load(os.path.join(path_model, 'imdb_history'))
+
+# Use absolute path when running in the server
+# model = keras.models.load_model('/home/ubuntu/Sentiment-analysis/app/imdb_model.h5')
+# model.load_weights('/home/ubuntu/Sentiment-analysis/app/imdb_weights.h5')
+# history_dict = joblib.load(os.path.join(path_model, '/home/ubuntu/Sentiment-analysis/app/imdb_history'))
 
 
 
