@@ -2,7 +2,7 @@
 
 ## About this app
 
-This [web app](http://ec2-35-181-53-166.eu-west-3.compute.amazonaws.com:8082/) allows you to classify movie reviews. By means of embeddings, it also allows you to visualise how the different words cluster with each other.
+This dash application allows you to classify movie reviews. By means of embeddings, it also allows you to visualise how the different words cluster with each other.
 
 ![screenshot](img/screenshot_app.png)
 ![screenshot](img/embedding.gif)
